@@ -5,9 +5,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class ParenSymmetry {
+public class parensymmetry {
 
-    private Boolean isBalanced(String s) {
+    public Boolean isBalanced(String s) {
         // implement this method
         int openCount = 0;
         int closedCount = 0;
@@ -20,11 +20,12 @@ public class ParenSymmetry {
                 closedCount += 1;
             }
         }
-        if (openCount % 2 != 0 || closedCount % 2 != 0) {
-            return false;
+          if(openCount==closedCount){
+            return true;
 
         } else {
-            return true;
+
+            return false;
         }
     }
 
@@ -51,19 +52,19 @@ public class ParenSymmetry {
     }
 
     public static void main(String[] args) {
-        ParenSymmetry ps = new ParenSymmetry();
+        parensymmetry ps = new parensymmetry();
 
         Boolean b0 = ps.isBalanced("()");
         printResult(b0, true);
 
-        String[] falseStrings = {"(", "((", ")", "", "(()())((())))"};
+        String[] falseStrings = {"(", "((", ")","", "(()())((())))"};
         Boolean falses = true;
         for (String strToTest : falseStrings) {
             falses = ps.isBalanced(strToTest);
         }
         printResult(falses, false);
 
-        String[] trueStrings = {"()", "(())", "(((())))", "", "(()())((()))", "(   )", "( () ( ) )"};
+        String[] trueStrings = {"()", "(())", "(((())))" ,"", "(()())((()))", "(   )", "( () ( ) )"};
         Boolean trues = false;
         for (String strToTest : trueStrings) {
             trues = ps.isBalanced(strToTest);
