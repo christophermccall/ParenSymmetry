@@ -30,29 +30,31 @@ public class parensymmetry {
     }
 
 
-    private void checkFile(String filename) {
+    public void checkFile(String filename) {
         // open file named filename
         try {
-            File file = new File(filename);
-            Scanner reader = new Scanner(file);
-            String data = "";
+
+            Scanner reader = new Scanner(new File(filename));
             // for each line in the file
             while (reader.hasNextLine()) {
                 // read the line
-                data = reader.nextLine();
+                System.out.println(isBalanced(reader.nextLine()));
+
             }
             // print whether or not the line's parenthesis are balanced
-            System.out.println(isBalanced(data));
+
             // CLOSE the file
             reader.close();
         }catch(FileNotFoundException e){
             System.out.println("file not found");
         }
 
+
     }
 
     public static void main(String[] args) {
         parensymmetry ps = new parensymmetry();
+
 
         Boolean b0 = ps.isBalanced("()");
         printResult(b0, true);
@@ -71,6 +73,7 @@ public class parensymmetry {
         }
         printResult(trues, true);
 
+        ps.checkFile("TestStrings0.txt");
     }
 
     private static void printResult(Boolean b0, boolean b) {
@@ -84,4 +87,5 @@ public class parensymmetry {
             System.out.println("Failure");
         }
     }
+
 }
